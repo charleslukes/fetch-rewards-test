@@ -7,7 +7,6 @@ import { payerTransactionRouter } from "./payer/payer.router";
 dotenv.config();
 
 if (!process.env.PORT) {
-  console.log("hdhdhd");
   process.exit(1);
 }
 
