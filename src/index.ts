@@ -3,6 +3,8 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import { payerTransactionRouter } from "./payer/payer.router";
+import { notFoundHandler } from "./middleware/not-found.middleware";
+import { errorHandler } from "./middleware/error.middleware";
 
 dotenv.config();
 
@@ -19,6 +21,9 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/", payerTransactionRouter);
+
+app.use(errorHandler);
+app.use(notFoundHandler);
 
 // Server Activation
 
