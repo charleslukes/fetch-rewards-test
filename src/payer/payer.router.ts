@@ -9,7 +9,7 @@ export const payerTransactionRouter = express.Router();
 // get transactions
 payerTransactionRouter.get("/", async (_req: Request, res: Response) => {
   try {
-    res.status(StatusCodes.OK).json("Fetch Requests Test...");
+    res.status(StatusCodes.OK).json("Fetch Rewards Test...");
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error.message);
   }
