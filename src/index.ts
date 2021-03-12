@@ -2,10 +2,12 @@ import * as dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
+import { payerTransactionRouter } from "./payer/payer.router";
 
 dotenv.config();
 
 if (!process.env.PORT) {
+  console.log("hdhdhd");
   process.exit(1);
 }
 
@@ -16,6 +18,8 @@ const app = express();
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+
+app.use("/", payerTransactionRouter);
 
 // Server Activation
 
