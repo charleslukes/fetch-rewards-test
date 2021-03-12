@@ -73,13 +73,20 @@ payerTransactionRouter.post(
   "/add-transaction",
   async (req: Request, res: Response) => {
     try {
-      await PayersTransactionsService.addPayerTransaction(req.body);
+      let data = await PayersTransactionsService.addPayerTransaction(req.body);
+      if (data.error) {
+        return res
+          .status(StatusCodes.BAD_REQUEST)
+          .json(
+            responseStructure(StatusCodes.BAD_REQUEST, null, data.error.message)
+          );
+      }
       res
         .status(StatusCodes.OK)
         .json(
           responseStructure(
             StatusCodes.OK,
-            null,
+            data.data,
             "Transaction Added Succefully"
           )
         );
@@ -103,7 +110,7 @@ payerTransactionRouter.post(
     try {
       let data = await PayersTransactionsService.spendPoints(req.body);
       if (data.isError) {
-        res
+        return res
           .status(StatusCodes.BAD_REQUEST)
           .json(
             responseStructure(
