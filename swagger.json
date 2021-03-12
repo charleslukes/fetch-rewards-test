@@ -1,0 +1,147 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "FETCH REWARDS TEST",
+    "description": "My test solution for fetch rewards test",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "tags": [
+    {
+      "name": "Payer Transactions",
+      "description": "API for payer transactions"
+    }
+  ],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/transactions": {
+      "get": {
+        "tags": ["Payer Transactions"],
+        "summary": "returns a list of all payer transactions",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/payer_transaction"
+            }
+          }
+        }
+      }
+    },
+    "/balance": {
+      "get": {
+        "tags": ["Payer Transactions"],
+        "summary": "returns the balance left in account",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/payer_transaction"
+            }
+          }
+        }
+      }
+    },
+    "/add-transaction": {
+      "post": {
+        "tags": ["Payer Transactions"],
+        "summary": "Adds a payer transaction",
+        "requestBody": {
+          "description": "Add Transaction",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/add_transactions"
+              }
+            }
+          }
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/payer_transaction"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/spend-points": {
+      "post": {
+        "tags": ["Payer Transactions"],
+        "summary": "Spend Points",
+        "requestBody": {
+          "description": "Spend Points",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/spend_points"
+              }
+            }
+          }
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/payer_transaction"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    }
+  },
+
+  "definitions": {
+    "payer_transaction": {
+      "type": "object",
+      "properties": {
+        "payer": "string",
+        "points": "number",
+        "timestamp": "string",
+        "payerId": "string",
+        "time": "number"
+      }
+    },
+    "spend_points": {
+      "type": "object",
+      "properties": {
+        "points": {
+          "type": "number",
+          "required": true
+        }
+      }
+    },
+    "add_transactions": {
+      "type": "object",
+      "properties": {
+        "payer": {
+          "type": "string",
+          "required": true
+        },
+        "points": {
+          "type": "number",
+          "required": true
+        },
+        "timestamp": {
+          "type": "string",
+          "required": true
+        }
+      }
+    }
+  }
+}
