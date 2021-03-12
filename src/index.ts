@@ -3,10 +3,11 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import swaggerUi from "swagger-ui-express";
-import * as swaggerDocument from "../swagger.json";
 import { payerTransactionRouter } from "./payer/payer.router";
 import { notFoundHandler } from "./middleware/not-found.middleware";
 import { errorHandler } from "./middleware/error.middleware";
+
+const swaggerDocument = require("../swagger.json");
 
 dotenv.config();
 
