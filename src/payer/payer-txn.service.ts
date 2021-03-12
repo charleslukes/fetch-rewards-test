@@ -10,7 +10,7 @@ import {
   addPayerTransactionSchema,
   spendPointsSchema,
 } from "./payer.validation";
-import { ValidationError } from "joi";
+import type { ValidationError } from "joi";
 
 // in memory store
 let payersTransactionsStore: Array<PayerDetailedTransaction> = [];
