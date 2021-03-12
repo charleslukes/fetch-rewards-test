@@ -11,7 +11,10 @@
     "type": "git",
     "url": "git+https://github.com/charleslukes/fetch-rewards-test.git"
   },
-  "keywords": [],
+  "keywords": [
+    "fetch-rewards-test",
+    "heroku"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
