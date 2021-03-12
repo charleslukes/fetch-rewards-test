@@ -7,4 +7,4 @@
 - spend points
 - get balance.
 
-see doc here:
+see doc here: https://aqueous-springs-94355.herokuapp.com/api-docs
